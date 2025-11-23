@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'edit_customar.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Customer Details For {{ customer.accnumber }}</h1>
+        <form action="{% url 'edit_customer' customer.accnumber %}" method="post">  <!-- Adjust action URL as needed for your backend -->
+            {% csrf_token %}  <!-- Include if using Django for CSRF protection -->
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ customer.name }}" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="{{ customer.phone }}" required>
+            
+            <label for="pan">PAN:</label>
+            <input type="text" id="pan" name="pan" value="{{ customer.pan }}" required>
+            
+            <label for="aadhaar">Aadhaar:</label>
+            <input type="text" id="aadhaar" name="aadhaar" value="{{ customer.aadhaar }}" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" value="{{ customer.amount }}" step="0.01" required>
+            
+            <button type="submit" class="submit-btn">Update Customer</button>
+        </form>
+        
+        <button class="back-btn" onclick="history.back()">Back</button>
+    </div>
+</body>
+</html>
