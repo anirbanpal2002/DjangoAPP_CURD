@@ -11,5 +11,6 @@ urlpatterns = [
     path('customer_details', views.customer_details, name='customer_details'),
     path('delete/<str:accnumber>/', views.delete_customer, name='delete_customer'),
     path('edit_customer/<str:accnumber>/', views.edit_customer, name='edit_customer'),
+    path('logout', views.logout, name='logout'),
 
 ]

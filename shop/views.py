@@ -5,7 +5,7 @@ from django.conf import settings
 from .models import UserAccount as user_a
 from .models import customeradd as customer_a
 from django.contrib import messages
-
+# from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -50,6 +50,7 @@ def createaccount(request):
 
     return render(request, 'create_account.html')
 
+# @login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
 
@@ -109,3 +110,6 @@ def edit_customer(request, accnumber):
             customer.save()
             return redirect('customer_details')
         return render(request, 'edit_customar.html', {'customer': customer})
+
+def logout(request):
+    return redirect('home')
